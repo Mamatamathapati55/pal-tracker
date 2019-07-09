@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: 'microsoft/dotnet:2.1-sdk'
+      - image: 'microsoft/dotnet:2.2-sdk'
         environment:
           DEBIAN_FRONTEND: "noninteractive"
     steps:
@@ -22,7 +22,7 @@ jobs:
 
   deployToReview:
     docker:
-      - image: 'microsoft/dotnet:2.1-sdk'
+      - image: 'microsoft/dotnet:2.2-sdk'
         environment:
           DEBIAN_FRONTEND: "noninteractive"
           EXTRACT_DEST: /tmp/extracted-archive
@@ -52,11 +52,11 @@ jobs:
             cd $EXTRACT_DEST
 
             cf login -a $CF_API -u "$CF_USERNAME" -p "$CF_PASSWORD" -o "$CF_ORG" -s "$CF_SPACE_REVIEW"
-            cf push -f manifest-$ENVIRONMENT.yml
+            cf push -f manifest-review.yml
 
   deployToProd:
     docker:
-      - image: 'microsoft/dotnet:2.1-sdk'
+      - image: 'microsoft/dotnet:2.2-sdk'
         environment:
           DEBIAN_FRONTEND: "noninteractive"
           EXTRACT_DEST: /tmp/extracted-archive
@@ -86,7 +86,7 @@ jobs:
             cd $EXTRACT_DEST
 
             cf login -a $CF_API -u "$CF_USERNAME" -p "$CF_PASSWORD" -o "$CF_ORG" -s "$CF_SPACE_PROD"
-            cf push -f manifest-$ENVIRONMENT.yml
+            cf push -f manifest-production.yml
 
 workflows:
   version: 2
