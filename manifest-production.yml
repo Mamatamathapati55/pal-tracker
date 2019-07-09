@@ -1,7 +1,7 @@
 ---
 applications:
-- name: pal-tracker
+- name: pal-tracker1
   path: src/PalTracker/bin/Release/netcoreapp2.2/publish/
   random-route: true
   env:
-    WELCOME_MESSAGE: Hello from production
+    WELCOME_MESSAGE: Hello from the production environment
