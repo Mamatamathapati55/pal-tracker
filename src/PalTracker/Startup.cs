@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -37,6 +37,7 @@ namespace PalTracker
                 Configuration.GetValue<string>("CF_INSTANCE_INDEX"),
                 Configuration.GetValue<string>("CF_INSTANCE_ADDR")
             ));
+            services.AddSingleton<ITimeEntryRepository, InMemoryTimeEntryRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
