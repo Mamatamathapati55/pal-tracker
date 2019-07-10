@@ -95,6 +95,7 @@ namespace PalTrackerTests
             var updated = new TimeEntry(1, 999, 888, new DateTime(2018, 12, 05, 23, 00, 01), 8);
 
             _repository.Setup(r => r.Update(1, theUpdate)).Returns(updated);
+            
             _repository.Setup(r => r.Contains(1)).Returns(true);
 
             var response = _controller.Update(1, theUpdate);
